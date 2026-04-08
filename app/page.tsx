@@ -75,7 +75,7 @@ export default function Home() {
                 />
               </motion.a>
             ))}
-            <div className="w-2/3 sm:w-56 md:w-64 flex flex-col">
+            <div className="w-full sm:w-[21rem] md:w-96 flex flex-col">
               <a
                 href="https://linkco.re/7YFvRhX6"
                 className="block mt-1"

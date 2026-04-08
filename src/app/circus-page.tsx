@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { CircusStage } from "./circus-stage";
 
 // ---- インフルエンサーのリンクをここに設定してください ----
@@ -40,7 +41,11 @@ const LINKS = [
 
 export default function CircusPage() {
   return (
-    <CircusStage title="🎪 AHO NA SHIMAI 🎪" contactHref="/contact">
+    <CircusStage
+      title="🎪 AHO NA SHIMAI 🎪"
+      contactHref="/contact"
+      characters={["/img/shizuka.png", "/img/sakura.png"]}
+    >
       {(phase) => (
         <>
           {/* YouTube */}
@@ -67,8 +72,7 @@ export default function CircusPage() {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="overflow-hidden rounded-xl cursor-pointer block shrink-0"
-                style={{ width: 200 }}
+                className="overflow-hidden rounded-xl cursor-pointer block shrink-0 w-2/3 sm:w-56 md:w-64"
                 initial={{ x: 40, opacity: 0 }}
                 animate={
                   phase === "links"
@@ -84,18 +88,27 @@ export default function CircusPage() {
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.97 }}
               >
-                <img
+                <Image
                   src={link.img}
                   alt={link.handle}
-                  className="w-full block"
+                  width={400}
+                  height={200}
+                  style={{ width: "100%", height: "auto", display: "block" }}
                 />
               </motion.a>
             ))}
             <a href="https://linkco.re/7YFvRhX6" className="w-full mt-1">
-              <img
+              <Image
                 src="/img/music.jpg"
                 alt="music"
-                className="w-full block rounded-xl"
+                width={800}
+                height={400}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  display: "block",
+                  borderRadius: "0.75rem",
+                }}
               />
             </a>
           </div>

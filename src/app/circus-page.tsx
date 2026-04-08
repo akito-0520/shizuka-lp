@@ -31,39 +31,39 @@ const LIGHTS = [
 // ---- インフルエンサーのリンクをここに設定してください ----
 const LINKS = [
   {
-    name: "Instagram",
-    handle: "@saakku10",
-    url: "https://www.instagram.com/saakku10",
-    bg: "#E1306C",
-    emoji: "📸",
-  },
-  {
-    name: "Instagram",
-    handle: "@s___42g",
-    url: "https://www.instagram.com/s___42g",
-    bg: "#833AB4",
-    emoji: "📸",
+    name: "LINE",
+    handle: "@249zxuyk",
+    url: "https://line.me/R/ti/p/@249zxuyk",
+    bg: "#06C755",
+    img: "/img/line.png",
   },
   {
     name: "Instagram",
     handle: "@ahosta3942",
     url: "https://www.instagram.com/ahosta3942",
     bg: "#F56040",
-    emoji: "📸",
+    img: "/img/instagram.png",
+  },
+  {
+    name: "Instagram",
+    handle: "@saakku10",
+    url: "https://www.instagram.com/saakku10",
+    bg: "#E1306C",
+    img: "/img/sakuraGram.png",
+  },
+  {
+    name: "Instagram",
+    handle: "@s___42g",
+    url: "https://www.instagram.com/s___42g",
+    bg: "#833AB4",
+    img: "/img/shizuGram.png",
   },
   {
     name: "TikTok",
     handle: "@hcmnskr",
     url: "https://www.tiktok.com/@hcmnskr?_r=1&_t=ZS-95MODMClh6V",
     bg: "#010101",
-    emoji: "🎵",
-  },
-  {
-    name: "LINE",
-    handle: "@249zxuyk",
-    url: "https://line.me/R/ti/p/@249zxuyk",
-    bg: "#06C755",
-    emoji: "💬",
+    img: "/img/tiktok.png",
   },
 ];
 // --------------------------------------------------------
@@ -201,10 +201,41 @@ export default function CircusPage() {
 
   return (
     <div
-      className="min-h-screen flex flex-col"
+      className="h-screen flex flex-col"
       style={{
-        background:
-          "repeating-linear-gradient(0deg, #FFE84D 0px, #FFE84D 44px, #FF3C3C 44px, #FF3C3C 88px)",
+        background: [
+          "radial-gradient(1px 1px at  5%  8%, #fff, transparent)",
+          "radial-gradient(2px 2px at 13% 20%, #fff, transparent)",
+          "radial-gradient(1px 1px at 22%  4%, rgba(255,255,255,0.8), transparent)",
+          "radial-gradient(1px 1px at 34% 14%, #fff, transparent)",
+          "radial-gradient(2px 2px at 47%  7%, rgba(255,255,255,0.9), transparent)",
+          "radial-gradient(1px 1px at 58%  2%, #fff, transparent)",
+          "radial-gradient(1px 1px at 66% 18%, rgba(255,255,255,0.7), transparent)",
+          "radial-gradient(2px 2px at 76%  9%, #fff, transparent)",
+          "radial-gradient(1px 1px at 88% 15%, rgba(255,255,255,0.8), transparent)",
+          "radial-gradient(1px 1px at 94%  5%, #fff, transparent)",
+          "radial-gradient(1px 1px at  9% 35%, rgba(255,255,255,0.6), transparent)",
+          "radial-gradient(2px 2px at 19% 48%, #fff, transparent)",
+          "radial-gradient(1px 1px at 31% 42%, rgba(255,255,255,0.7), transparent)",
+          "radial-gradient(1px 1px at 43% 55%, rgba(255,255,255,0.5), transparent)",
+          "radial-gradient(2px 2px at 55% 38%, #fff, transparent)",
+          "radial-gradient(1px 1px at 67% 50%, rgba(255,255,255,0.8), transparent)",
+          "radial-gradient(1px 1px at 79% 44%, #fff, transparent)",
+          "radial-gradient(2px 2px at 90% 52%, rgba(255,255,255,0.9), transparent)",
+          "radial-gradient(1px 1px at  4% 68%, #fff, transparent)",
+          "radial-gradient(1px 1px at 16% 75%, rgba(255,255,255,0.6), transparent)",
+          "radial-gradient(2px 2px at 27% 82%, #fff, transparent)",
+          "radial-gradient(1px 1px at 39% 72%, rgba(255,255,255,0.7), transparent)",
+          "radial-gradient(1px 1px at 51% 88%, #fff, transparent)",
+          "radial-gradient(2px 2px at 63% 78%, rgba(255,255,255,0.8), transparent)",
+          "radial-gradient(1px 1px at 74% 65%, rgba(255,255,255,0.5), transparent)",
+          "radial-gradient(1px 1px at 84% 80%, #fff, transparent)",
+          "radial-gradient(2px 2px at 96% 70%, rgba(255,255,255,0.9), transparent)",
+          "radial-gradient(1px 1px at 30% 30%, rgba(180,210,255,0.9), transparent)",
+          "radial-gradient(2px 2px at 70% 60%, rgba(180,210,255,0.8), transparent)",
+          "radial-gradient(1px 1px at 50% 25%, rgba(200,220,255,0.7), transparent)",
+          "linear-gradient(180deg, #092165ff 0%, #12317fff 40%, #1a459cff 100%)",
+        ].join(", "),
       }}
     >
       {/* Title */}
@@ -228,30 +259,11 @@ export default function CircusPage() {
           ref={stageRef}
           className="relative flex-1 rounded-t-3xl overflow-hidden flex flex-col"
           style={{
-            minHeight: 460,
-            background:
-              "linear-gradient(180deg, #0c0528 0%, #1e0a44 30%, #600a0a 80%, #3a0000 100%)",
+            background: "#0075c2",
             border: "5px solid #b8860b",
             borderBottom: "none",
           }}
         >
-          {/* YouTube embed */}
-          {/* TODO: replace dQw4w9WgXcQ with the actual video ID */}
-          <div className="relative z-[5] shrink-0 px-3 pt-16 pb-2">
-            <div
-              className="relative w-full"
-              style={{ paddingBottom: "56.25%" }}
-            >
-              <iframe
-                className="absolute inset-0 w-full h-full rounded-2xl shadow-2xl"
-                src="https://www.youtube.com/embed/?list=UUXpHerQkfg1vPYEDRyELOAg"
-                title="YouTube video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          </div>
-
           {/* Stars */}
           {STARS.map((s, i) => (
             <motion.div
@@ -273,9 +285,9 @@ export default function CircusPage() {
           <div
             className="absolute bottom-0 left-0 right-0"
             style={{
-              height: "16%",
+              height: "8%",
               background:
-                "repeating-linear-gradient(90deg, #4a2800 0px, #4a2800 28px, #5e3510 28px, #5e3510 56px)",
+                "repeating-linear-gradient(90deg, #FFE84D 0px, #FFE84D 28px, #FF3C3C 28px, #FF3C3C 56px)",
             }}
           />
 
@@ -288,26 +300,39 @@ export default function CircusPage() {
             }}
           />
 
-          {/* URL cards (behind curtains) */}
-          <div className="relative z-[5] flex-1 flex items-center justify-center px-2 pb-24">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 w-full">
+          {/* Scrollable content (behind curtains) */}
+          <div className="relative z-[5] flex-1 min-h-0 overflow-y-auto pt-16 pb-4">
+            {/* YouTube embed */}
+            <div className="px-3 pb-4">
+              <div
+                className="relative w-full"
+                style={{ paddingBottom: "56.25%" }}
+              >
+                <iframe
+                  className="absolute inset-0 w-full h-full rounded-2xl shadow-2xl"
+                  src="https://www.youtube.com/embed/?list=UUXpHerQkfg1vPYEDRyELOAg"
+                  title="YouTube video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+
+            {/* URL list */}
+            <div className="flex flex-col items-center gap-3 px-4">
               {LINKS.map((link, i) => (
                 <motion.a
                   key={link.handle}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center justify-center rounded-2xl py-4 px-2 shadow-xl cursor-pointer"
-                  style={{
-                    backgroundColor: link.bg,
-                    color: "white",
-                    minHeight: 88,
-                  }}
-                  initial={{ scale: 0, opacity: 0 }}
+                  className="relative overflow-hidden rounded-xl cursor-pointer block shrink-0"
+                  style={{ width: 200 }}
+                  initial={{ x: 40, opacity: 0 }}
                   animate={
                     phase === "links"
-                      ? { scale: 1, opacity: 1 }
-                      : { scale: 0, opacity: 0 }
+                      ? { x: 0, opacity: 1 }
+                      : { x: 40, opacity: 0 }
                   }
                   transition={{
                     type: "spring",
@@ -315,24 +340,35 @@ export default function CircusPage() {
                     damping: 22,
                     delay: 0.2 + i * 0.09,
                   }}
-                  whileHover={{
-                    scale: 1.07,
-                    y: -5,
-                    boxShadow: "0 16px 32px rgba(0,0,0,0.5)",
-                  }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.97 }}
                 >
-                  <span className="text-3xl">{link.emoji}</span>
-                  <span className="font-bold text-sm md:text-base mt-1">
-                    {link.name}
-                  </span>
-                  <span className="text-xs opacity-70 mt-0.5">
-                    {link.handle}
-                  </span>
+                  <img
+                    src={link.img ?? undefined}
+                    alt={link.handle}
+                    className="w-full block"
+                  />
                 </motion.a>
               ))}
             </div>
+
+            {/* music.jpg */}
+            <div className="px-4 pt-3">
+              <a href="https://linkco.re/7YFvRhX6">
+                <img
+                  src="/img/music.jpg"
+                  alt="music"
+                  className="w-full block rounded-xl"
+                />
+              </a>
+            </div>
           </div>
+
+          {/* Fixed bottom spacer — keeps floor/bear always visible */}
+          <div
+            className="shrink-0 pointer-events-none"
+            style={{ height: "18%" }}
+          />
 
           {/* Left curtain */}
           <motion.div

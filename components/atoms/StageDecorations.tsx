@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { LIGHTS } from "../../constants/ligthsColor";
+import { LIGHTS } from "../../constants/lightsColor";
 
 export function StageDecorations() {
   return (

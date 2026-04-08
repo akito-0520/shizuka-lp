@@ -1,6 +1,6 @@
 "use client";
 
-import { CircusStage } from "../circus-stage";
+import { CircusStage } from "../../components/CircusStage";
 
 // ---- メールアドレスをここに設定してください ----
 const CONTACT_EMAIL = "88entertaiment.nh@gmail.com";

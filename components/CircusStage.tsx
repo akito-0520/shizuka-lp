@@ -4,202 +4,13 @@ import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { CIRCUS_BG } from "./circus-bg";
+import { CIRCUS_BG } from "../constants/circusBackground";
+import { LIGHTS } from "../constants/ligthsColor";
+import { STARS } from "../constants/stars";
+import { Ball } from "./Ball";
+import { BEAR_ASPECT, BearSVG } from "./BearSVG";
+import { Curtain } from "./Curtain";
 
-// ── Static data ──────────────────────────────────────────
-const STARS = Array.from({ length: 24 }, (_, i) => ({
-  w: 2 + (i % 3),
-  h: 2 + (i % 2),
-  left: `${(i * 19 + 5) % 94}%`,
-  top: `${(i * 13 + 3) % 44}%`,
-  dur: 1 + (i % 4) * 0.35,
-  delay: (i * 0.23) % 2.8,
-}));
-
-const LIGHTS = [
-  "#FF3333",
-  "#FFD700",
-  "#33CC33",
-  "#FF69B4",
-  "#33BBFF",
-  "#FF8C00",
-  "#CC33FF",
-  "#FF3333",
-  "#FFD700",
-  "#33CC33",
-  "#FF69B4",
-  "#33BBFF",
-];
-
-const BEAR_ASPECT = 132 / 100;
-
-// ── BearSVG ──────────────────────────────────────────────
-function BearSVG({ isWalking }: { isWalking: boolean }) {
-  return (
-    <svg
-      viewBox="0 0 100 132"
-      xmlns="http://www.w3.org/2000/svg"
-      width="100%"
-      height="100%"
-      overflow="visible"
-    >
-      <motion.g
-        style={{ transformBox: "fill-box", transformOrigin: "center" }}
-        animate={isWalking ? { rotate: 360 } : { rotate: 0 }}
-        transition={
-          isWalking ? { duration: 0.65, repeat: Infinity, ease: "linear" } : {}
-        }
-      >
-        <circle cx="50" cy="114" r="22" fill="#FF6B35" />
-        <ellipse cx="50" cy="105" rx="20" ry="6" fill="#E55A25" opacity="0.6" />
-        <path
-          d="M 28 114 Q 50 102 72 114"
-          stroke="#FFD700"
-          strokeWidth="2.5"
-          fill="none"
-        />
-        <path
-          d="M 29 120 Q 50 128 71 120"
-          stroke="#FFD700"
-          strokeWidth="2.5"
-          fill="none"
-        />
-        <line
-          x1="50"
-          y1="92"
-          x2="50"
-          y2="136"
-          stroke="#FFD700"
-          strokeWidth="1.5"
-        />
-      </motion.g>
-      <ellipse cx="50" cy="74" rx="18" ry="22" fill="#8B4513" />
-      <ellipse cx="50" cy="79" rx="11" ry="14" fill="#CD853F" />
-      <circle cx="50" cy="40" r="21" fill="#8B4513" />
-      <circle cx="32" cy="23" r="10" fill="#8B4513" />
-      <circle cx="68" cy="23" r="10" fill="#8B4513" />
-      <circle cx="32" cy="23" r="6" fill="#FFB6C1" />
-      <circle cx="68" cy="23" r="6" fill="#FFB6C1" />
-      <circle cx="42" cy="37" r="3.5" fill="#111" />
-      <circle cx="58" cy="37" r="3.5" fill="#111" />
-      <circle cx="43" cy="36" r="1.3" fill="white" />
-      <circle cx="59" cy="36" r="1.3" fill="white" />
-      <circle cx="35" cy="44" r="5.5" fill="#FFB6C1" opacity="0.55" />
-      <circle cx="65" cy="44" r="5.5" fill="#FFB6C1" opacity="0.55" />
-      <ellipse cx="50" cy="47" rx="5.5" ry="4" fill="#222" />
-      <path
-        d="M 44 52 Q 50 58 56 52"
-        stroke="#222"
-        strokeWidth="1.8"
-        fill="none"
-        strokeLinecap="round"
-      />
-      <ellipse
-        cx="30"
-        cy="70"
-        rx="9"
-        ry="6"
-        fill="#8B4513"
-        transform="rotate(-25 30 70)"
-      />
-      <ellipse
-        cx="70"
-        cy="70"
-        rx="9"
-        ry="6"
-        fill="#8B4513"
-        transform="rotate(25 70 70)"
-      />
-      <rect x="39" y="17" width="22" height="5" rx="2.5" fill="#AA0000" />
-      <rect x="43" y="2" width="14" height="17" rx="3" fill="#CC0000" />
-      <circle cx="50" cy="2" r="2.5" fill="#FFD700" />
-      <polygon points="43,82 37,88 43,94" fill="#FFD700" />
-      <polygon points="57,82 63,88 57,94" fill="#FFD700" />
-      <circle cx="50" cy="88" r="4" fill="#FFD700" />
-    </svg>
-  );
-}
-
-// ── Ball ─────────────────────────────────────────────────
-function Ball({ size }: { size: number }) {
-  return (
-    <svg viewBox="0 0 44 44" width={size} height={size}>
-      <motion.g
-        style={{ transformOrigin: "22px 22px" }}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 0.5, repeat: Infinity, ease: "linear" }}
-      >
-        <circle cx="22" cy="22" r="22" fill="#FF6B35" />
-        <ellipse cx="22" cy="12" rx="19" ry="5" fill="#E55A25" opacity="0.6" />
-        <path
-          d="M 0 22 Q 22 10 44 22"
-          stroke="#FFD700"
-          strokeWidth="2"
-          fill="none"
-        />
-        <path
-          d="M 1 28 Q 22 36 43 28"
-          stroke="#FFD700"
-          strokeWidth="2"
-          fill="none"
-        />
-        <line
-          x1="22"
-          y1="0"
-          x2="22"
-          y2="44"
-          stroke="#FFD700"
-          strokeWidth="1.5"
-        />
-      </motion.g>
-    </svg>
-  );
-}
-
-// ── Curtain ───────────────────────────────────────────────
-function Curtain({ side, open }: { side: "left" | "right"; open: boolean }) {
-  const isLeft = side === "left";
-  return (
-    <motion.div
-      className={`absolute top-0 ${isLeft ? "left-0" : "right-0"} bottom-0 z-10`}
-      style={{
-        width: "50%",
-        background: isLeft
-          ? "repeating-linear-gradient(90deg, #7a0000 0px, #7a0000 14px, #cc0000 14px, #cc0000 24px, #990000 24px, #990000 36px)"
-          : "repeating-linear-gradient(90deg, #990000 0px, #990000 12px, #cc0000 12px, #cc0000 22px, #7a0000 22px, #7a0000 36px)",
-      }}
-      animate={
-        open
-          ? { x: isLeft ? "-100%" : "100%", y: "-28%" }
-          : { x: "0%", y: "0%" }
-      }
-      transition={{ duration: 1.3, ease: [0.76, 0, 0.24, 1] }}
-    >
-      <div
-        className={`absolute ${isLeft ? "right-0" : "left-0"} top-0 bottom-0`}
-        style={{ width: 10, background: "#b8860b" }}
-      />
-      <div
-        className={`absolute ${isLeft ? "right-4" : "left-4"} top-0 bottom-0 flex flex-col justify-evenly items-center`}
-      >
-        {Array.from({ length: 8 }).map((_, i) => (
-          <div
-            key={i}
-            style={{
-              width: 13,
-              height: 13,
-              borderRadius: "50%",
-              background: "#FFD700",
-              boxShadow: "0 2px 4px rgba(0,0,0,0.4)",
-            }}
-          />
-        ))}
-      </div>
-    </motion.div>
-  );
-}
-
-// ── CircusStage (shared layout) ───────────────────────────
 export type CircusPhase = "walking" | "arrived" | "open" | "links";
 
 interface CircusStageProps {
@@ -232,7 +43,6 @@ export function CircusStage({
     const w = Math.min(Math.max(Math.round(stageW * 0.22), 80), 200);
     setBearW(w); // eslint-disable-line react-hooks/set-state-in-effect
 
-    // char1 from left, char2 from right; if single, center
     const gap = 8;
     const target1X = hasTwo
       ? Math.max(stageW / 2 - w - gap, 20)
@@ -423,7 +233,7 @@ export function CircusStage({
                   </motion.div>
                 )}
 
-                {/* Bounce wrapper — identical to original bear */}
+                {/* Bounce wrapper */}
                 <motion.div
                   style={{
                     width: "100%",

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "format": "npx prettier --write \"./app/**/*.{js,jsx,ts,tsx,json,css,md}\""
+    "format": "npx prettier --write \"./**/*.{js,jsx,ts,tsx,json,css,md}\""
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

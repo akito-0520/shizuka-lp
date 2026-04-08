@@ -257,14 +257,14 @@ export default function CircusPage() {
         {/* Stage */}
         <div
           ref={stageRef}
-          className="relative flex-1 rounded-t-3xl overflow-hidden flex flex-col"
+          className="relative flex-1 rounded-t-3xl overflow-hidden"
           style={{
             background: "#0075c2",
             border: "5px solid #b8860b",
             borderBottom: "none",
           }}
         >
-          {/* Stars */}
+          {/* ── Layer 0: Background decorations ── */}
           {STARS.map((s, i) => (
             <motion.div
               key={i}
@@ -280,18 +280,6 @@ export default function CircusPage() {
               transition={{ duration: s.dur, repeat: Infinity, delay: s.delay }}
             />
           ))}
-
-          {/* Stage floor */}
-          <div
-            className="absolute bottom-0 left-0 right-0"
-            style={{
-              height: "8%",
-              background:
-                "repeating-linear-gradient(90deg, #FFE84D 0px, #FFE84D 28px, #FF3C3C 28px, #FF3C3C 56px)",
-            }}
-          />
-
-          {/* Spotlight */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -300,9 +288,12 @@ export default function CircusPage() {
             }}
           />
 
-          {/* Scrollable content (behind curtains) */}
-          <div className="relative z-[5] flex-1 min-h-0 overflow-y-auto pt-16 pb-4">
-            {/* YouTube embed */}
+          {/* ── Layer 1: Scrollable content (top → above floor) ── */}
+          <div
+            className="absolute inset-x-0 top-0 z-[5] overflow-y-auto pt-16 pb-4"
+            style={{ bottom: "8%" }}
+          >
+            {/* YouTube */}
             <div className="px-3 pb-4">
               <div
                 className="relative w-full"
@@ -318,7 +309,7 @@ export default function CircusPage() {
               </div>
             </div>
 
-            {/* URL list */}
+            {/* Links + Music */}
             <div className="flex flex-col items-center gap-3 px-4">
               {LINKS.map((link, i) => (
                 <motion.a
@@ -326,7 +317,7 @@ export default function CircusPage() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative overflow-hidden rounded-xl cursor-pointer block shrink-0"
+                  className="overflow-hidden rounded-xl cursor-pointer block shrink-0"
                   style={{ width: 200 }}
                   initial={{ x: 40, opacity: 0 }}
                   animate={
@@ -350,11 +341,7 @@ export default function CircusPage() {
                   />
                 </motion.a>
               ))}
-            </div>
-
-            {/* music.jpg */}
-            <div className="px-4 pt-3">
-              <a href="https://linkco.re/7YFvRhX6">
+              <a href="https://linkco.re/7YFvRhX6" className="w-full mt-1">
                 <img
                   src="/img/music.jpg"
                   alt="music"
@@ -364,13 +351,17 @@ export default function CircusPage() {
             </div>
           </div>
 
-          {/* Fixed bottom spacer — keeps floor/bear always visible */}
+          {/* ── Layer 2: Fixed floor (always visible) ── */}
           <div
-            className="shrink-0 pointer-events-none"
-            style={{ height: "18%" }}
+            className="absolute bottom-0 left-0 right-0"
+            style={{
+              height: "8%",
+              background:
+                "repeating-linear-gradient(90deg, #FFE84D 0px, #FFE84D 28px, #FF3C3C 28px, #FF3C3C 56px)",
+            }}
           />
 
-          {/* Left curtain */}
+          {/* ── Layer 3: Curtains (z-10) ── */}
           <motion.div
             className="absolute top-0 left-0 bottom-0 z-10"
             style={{
@@ -404,8 +395,6 @@ export default function CircusPage() {
               ))}
             </div>
           </motion.div>
-
-          {/* Right curtain */}
           <motion.div
             className="absolute top-0 right-0 bottom-0 z-10"
             style={{
@@ -440,13 +429,13 @@ export default function CircusPage() {
             </div>
           </motion.div>
 
-          {/* Bear on ball */}
+          {/* ── Layer 4: Bear (z-30) ── */}
           <motion.div
             className="absolute left-0 z-30"
             style={{
               width: bearW,
               height: Math.round(bearW * BEAR_ASPECT),
-              bottom: "14%",
+              bottom: "8%",
             }}
             initial={{ x: -(bearW + 30) }}
             animate={bearControls}
@@ -486,7 +475,7 @@ export default function CircusPage() {
             </motion.div>
           </motion.div>
 
-          {/* Stage lights */}
+          {/* ── Layer 5: Top overlay — lights & valance (z-20) ── */}
           <div className="absolute top-10 left-0 right-0 z-20 flex justify-around px-4">
             {LIGHTS.map((color, i) => (
               <motion.div
@@ -508,8 +497,6 @@ export default function CircusPage() {
               />
             ))}
           </div>
-
-          {/* Valance (top bunting triangles) */}
           <div
             className="absolute top-0 left-0 right-0 z-20 flex"
             style={{ height: 38 }}
